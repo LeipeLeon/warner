@@ -1,5 +1,7 @@
 # Warner
 
+[ ![Codeship Status for LeipeLeon/warner](https://app.codeship.com/projects/951314e0-806a-0135-5d58-6a64ad6118ad/status?branch=master)](https://app.codeship.com/projects/246699)
+
 Display warnings w/ a red color to the `$stderr` when a newer version of rails or a gem is installed
 
 ## Installation
