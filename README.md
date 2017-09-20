@@ -1,8 +1,6 @@
 # Warner
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/warner`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Display warnings w/ a red color to the `$stderr` when a newer version of rails or a gem is installed
 
 ## Installation
 
@@ -22,7 +20,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Display a message when rails is updated and needs a change
+e.g. when monkeypatching a gem put the code into the monkey patch
+
+```ruby
+# app/monkeypatches/bootstrap_form.rb
+Warner.rails_version_warning("3.2", "REMOVE monkeypatches/bootstrap_form: upgrade to latest version")
+
+module BootstrapForm
+  ...
+end
+```
+
+will output
+
+```shell
+\e[41;37;1m[RAILS] 4.0.0 > 3.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version\e[0m
+```
+
+```ruby
+# app/mailers/my_mailer.rb
+class MyMailer < ActionMailer::Base
+
+  Warner.rails_version_warning("3.2", "REMOVE: MyMailer#default_i18n_subject is a copy of 4.0 implementations")
+
+  def default_i18n_subject(interpolations = {})
+    ...
+  end
+
+end
+```
+
+will output
+
+```shell
+\e[41;37;1m[RAILS] 4.0.0 > 3.2 : REMOVE: MyMailer#default_i18n_subject is a copy of 4.0 implementations\e[0m
+```
+
 
 ## Development
 
