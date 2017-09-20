@@ -1,4 +1,4 @@
-require "warner/version"
+require_relative "warner/version"
 
 class Warner
 
