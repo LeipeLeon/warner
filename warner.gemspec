@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["leipeleon@gmail.com"]
 
   spec.summary       = %q{Annotate your code w/ custom deprecation warnings}
-  spec.description   = %q{for exampele when a newer version of a gem or rails is installed. Especially useful for monkeypatching.}
+  spec.description   = %q{Annotate your code w/ custom deprecation warnings. For example when a newer version of a gem or rails is installed. Especially useful for monkeypatching.}
   spec.homepage      = "https://github.com/LeipeLeon/warner"
   spec.license       = "MIT"
 
