@@ -1,16 +1,5 @@
 require_relative "warner/version"
 
-if Object.const_defined?('ActiveSupport')
-  module ActiveSupport
-    class Deprecation
-      DEFAULT_BEHAVIORS[:stderr] = -> (message, callstack) {
-        $stderr.puts"\e[41;37;1m#{message}\e[0m"
-        $stderr.puts callstack.join("\n  ") if debug
-      }
-    end
-  end
-end
-
 class Warner
 
   def self.colored_warning(message, callstack = nil)
