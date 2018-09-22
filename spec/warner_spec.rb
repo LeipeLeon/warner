@@ -28,7 +28,7 @@ RSpec.describe Warner do
       out = capture_stderr do
         Warner.gem_version_warning('warner', '0.0.1', 'warning!')
       end
-      expect(out.string).to match(/\[DEPRECATION WARNING\]: \[gem:warner\] 1.0.0 > 0.0.1 : warning!/)
+      expect(out.string).to match(/\[DEPRECATION WARNING\]: \[gem:warner\] 1.0.1 > 0.0.1 : warning!/)
     end
 
     it "no message if version is the same" do
