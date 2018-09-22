@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["leipeleon@gmail.com"]
 
   spec.summary       = %q{Create warner methods to be used in Rails applications}
-  spec.description   = %q{For example to higlite code taht needs to be changes/deprecated at certain version}
+  spec.description   = %q{For example to higlite code that needs to be changes/deprecated at certain version}
   spec.homepage      = "https://github.com/LeipeLeon/warner"
   spec.license       = "MIT"
 
@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-autotest'
   spec.add_development_dependency 'autotest-standalone'
   spec.add_development_dependency 'autotest-fsevent'
+  spec.add_development_dependency 'activesupport'
 end
