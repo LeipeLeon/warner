@@ -30,51 +30,19 @@ Or install it yourself as:
 
 ## Usage
 
-### `Warner.gem_version_warning`
-
-Display a message when specified is updated and needs a change.
-
 ```ruby
 # app/monkeypatches/bootstrap_form.rb
 Warner.gem_version_warning('bootstrap_form', "1.2", "upgrade to latest version")
-```
-
-will output:
-
-```log
-DEPRECATION WARNING: [gem:bootstrap_form] 2.7.0 > 1.2 : upgrade to latest version (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
-```
----
-
-### `Warner.rails_version_warning`
-
-Display a message when rails is updated and needs a change.
-
-```ruby
-# app/monkeypatches/bootstrap_form.rb
 Warner.rails_version_warning("5.0", "Remove this monkeypatch b/c it's fixed in 5.1 (see issue #99999)")
-```
-
-will output:
-
-```log
-DEPRECATION WARNING: [RAILS] 5.1.6 > 5.0 : Remove this monkeypatch b/c it's fixed in 5.1 (see issue #99999) (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
-```
-
----
-### `Warner.colored_warning`
-
-Just display a message w/o any checking of versions
-
-```ruby
-# app/monkeypatches/bootstrap_form.rb
 Warner.colored_warning("Somebody look at this piece of code please!")
 ```
 
 will output:
 
 ```log
-DEPRECATION WARNING: Somebody look at this piece of code please! (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
+DEPRECATION WARNING: [gem:bootstrap_form] 2.7.0 > 1.2 : upgrade to latest version (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
+DEPRECATION WARNING: [RAILS] 5.1.6 > 5.0 : Remove this monkeypatch b/c it's fixed in 5.1 (see issue #99999) (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:2)
+DEPRECATION WARNING: Somebody look at this piece of code please! (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:3)
 ```
 
 ## Bonus material: make deprecations stand out in the logfile
