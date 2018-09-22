@@ -2,7 +2,15 @@
 
 [![Gem Version](https://badge.fury.io/rb/warner.svg)](https://badge.fury.io/rb/warner) [![Codeship Status for LeipeLeon/warner](https://app.codeship.com/projects/951314e0-806a-0135-5d58-6a64ad6118ad/status?branch=master)](https://app.codeship.com/projects/246699)
 
-Annotate your code w/ custom deprecation warnings to the `$stderr` when a newer version of a gem or rails is installed. Especially useful for monkeypatching.
+Annotate your code w/ custom deprecation warnings to the `$stderr` when a newer version of a gem or rails is installed.
+
+
+Especially useful for a controlled (rails) monkeypatching workflow:
+
+Say you found a bug in a gem and waiting for a new release wil ltake to long.
+Add a monkeypatch in `app/monkeypatches/` (e.g. `app/monkeypatches/bootstrap_form.rb` and maybe write a spec for it.)
+When you update the flawed gem, `Warner` will check the supplied version against the installed version and will put out a deprecation warning (w/ `ActiveSupport::Deprecation`) so you can act upon it.
+
 
 ## Installation
 
