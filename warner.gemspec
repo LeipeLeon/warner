@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Leon Berenschot"]
   spec.email         = ["leipeleon@gmail.com"]
 
-  spec.summary       = %q{Create warner methods to be used in Rails applications}
-  spec.description   = %q{For example to higlite code that needs to be changes/deprecated at certain version}
+  spec.summary       = %q{Annotate your code w/ custom deprecation warnings}
+  spec.description   = %q{for exampele when a newer version of a gem or rails is installed. Especially useful for monkeypatching.}
   spec.homepage      = "https://github.com/LeipeLeon/warner"
   spec.license       = "MIT"
 

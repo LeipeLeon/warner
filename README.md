@@ -1,7 +1,8 @@
 # Warner
 
 [![Gem Version](https://badge.fury.io/rb/warner.svg)](https://badge.fury.io/rb/warner) [![Codeship Status for LeipeLeon/warner](https://app.codeship.com/projects/951314e0-806a-0135-5d58-6a64ad6118ad/status?branch=master)](https://app.codeship.com/projects/246699)
-Display warnings w/ a red color to the `$stderr` when a newer version of rails or a gem is installed
+
+Annotate your code w/ custom deprecation warnings to the `$stderr` when a newer version of a gem or rails is installed. Especially useful for monkeypatching.
 
 ## Installation
 
@@ -23,64 +24,50 @@ Or install it yourself as:
 
 ### `Warner.gem_version_warning`
 
-Display a message when specified is updated and needs a change
-e.g. when monkeypatching a gem: put the code into the monkey patch
+Display a message when specified is updated and needs a change.
 
 ```ruby
 # app/monkeypatches/bootstrap_form.rb
-Warner.gem_version_warning('bootstrap_form', "1.2", "REMOVE monkeypatches/bootstrap_form: upgrade to latest version")
-
-module BootstrapForm
-  ...
-end
+Warner.gem_version_warning('bootstrap_form', "1.2", "upgrade to latest version")
 ```
 
-will output
+will output:
 
-```shell
-\e[41;37;1mDEPRECATION WARNING: [gem:bootstrap_form] 2.7.0 > 1.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version (called from <class:HTTP> at /Users/berl/Clients/bwh/core/config/initializers/fix_ssl.rb:11\e[0m
+```log
+DEPRECATION WARNING: [gem:bootstrap_form] 2.7.0 > 1.2 : upgrade to latest version (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
 ```
-
+---
 
 ### `Warner.rails_version_warning`
 
-Display a message when rails is updated and needs a change
-e.g. when monkeypatching a gem put the code into the monkey patch
+Display a message when rails is updated and needs a change.
 
 ```ruby
 # app/monkeypatches/bootstrap_form.rb
-Warner.rails_version_warning("3.2", "REMOVE monkeypatches/bootstrap_form: upgrade to latest version")
-
-module BootstrapForm
-  ...
-end
+Warner.rails_version_warning("5.0", "Remove this monkeypatch b/c it's fixed in 5.1 (see issue #99999)")
 ```
 
-will output
+will output:
 
-```shell
-\e[41;37;1mDEPRECATION WARNING: [RAILS] 5.1.6 > 3.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version (called from <class:HTTP> at /Users/berl/Clients/bwh/core/config/initializers/fix_ssl.rb:10)\e[0m
+```log
+DEPRECATION WARNING: [RAILS] 5.1.6 > 5.0 : Remove this monkeypatch b/c it's fixed in 5.1 (see issue #99999) (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
 ```
+
+---
+### `Warner.colored_warning`
+
+Just display a message w/o any checking of versions
 
 ```ruby
-# app/mailers/my_mailer.rb
-class MyMailer < ActionMailer::Base
-
-  Warner.rails_version_warning("3.2", "REMOVE: MyMailer#default_i18n_subject is a copy of 4.0 implementations")
-
-  def default_i18n_subject(interpolations = {})
-    ...
-  end
-
-end
+# app/monkeypatches/bootstrap_form.rb
+Warner.colored_warning("Somebody look at this piece of code please!")
 ```
 
-will output
+will output:
 
-```shell
-\e[41;37;1m[RAILS] 4.0.0 > 3.2 : REMOVE: MyMailer#default_i18n_subject is a copy of 4.0 implementations\e[0m
+```log
+DEPRECATION WARNING: Somebody look at this piece of code please! (called from <top (required)> at /Users/berl/Clients/bwh/core/app/monkeypatches/bootstrap_form.rb:1)
 ```
-
 
 ## Development
 
