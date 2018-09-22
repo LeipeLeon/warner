@@ -22,6 +22,29 @@ Or install it yourself as:
 
 ## Usage
 
+### `Warner.gem_version_warning`
+
+Display a message when specified is updated and needs a change
+e.g. when monkeypatching a gem: put the code into the monkey patch
+
+```ruby
+# app/monkeypatches/bootstrap_form.rb
+Warner.gem_version_warning('bootstrap_form', "1.2", "REMOVE monkeypatches/bootstrap_form: upgrade to latest version")
+
+module BootstrapForm
+  ...
+end
+```
+
+will output
+
+```shell
+\e[41;37;1mDEPRECATION WARNING: [gem:bootstrap_form] 2.7.0 > 1.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version (called from <class:HTTP> at /Users/berl/Clients/bwh/core/config/initializers/fix_ssl.rb:11\e[0m
+```
+
+
+### `Warner.rails_version_warning`
+
 Display a message when rails is updated and needs a change
 e.g. when monkeypatching a gem put the code into the monkey patch
 
@@ -37,7 +60,7 @@ end
 will output
 
 ```shell
-\e[41;37;1m[RAILS] 4.0.0 > 3.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version\e[0m
+\e[41;37;1mDEPRECATION WARNING: [RAILS] 5.1.6 > 3.2 : REMOVE monkeypatches/bootstrap_form: upgrade to latest version (called from <class:HTTP> at /Users/berl/Clients/bwh/core/config/initializers/fix_ssl.rb:10)\e[0m
 ```
 
 ```ruby
@@ -62,9 +85,7 @@ will output
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
