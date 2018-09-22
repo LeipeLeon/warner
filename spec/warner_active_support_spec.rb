@@ -85,8 +85,4 @@ RSpec.describe 'Warner w/ ActiveSupport' do
 
   end
 
-  # context "stack trace" do
-  #   ActiveSupport::Deprecation.debug = true
-  # end
-
 end

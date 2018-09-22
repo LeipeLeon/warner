@@ -4,7 +4,6 @@ class Warner
 
   def self.colored_warning(message, callstack = nil)
     if Object.const_defined?('ActiveSupport')
-      # callstack ||= caller_locations(2)
       ActiveSupport::Deprecation.warn message, callstack
     else
       warn "\e[41;37;1m[DEPRECATION WARNING]: #{message}\e[0m"
