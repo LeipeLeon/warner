@@ -49,9 +49,8 @@ DEPRECATION WARNING: Somebody look at this piece of code please! (called from <t
 
 ```ruby
 # config/environments/development.rb
-ActiveSupport::Deprecation.behavior = -> (message, callstack) {
-  $stderr.puts"\e[41;37;1m#{message}\e[0m"
-  $stderr.puts callstack.join("\n  ") if debug
+config.active_support.deprecation = -> (message, callstack) {
+  $stderr.puts "\e[41;37;1m#{message}\e[0m"
 }
 ```
 
