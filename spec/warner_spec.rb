@@ -2,8 +2,8 @@ require "spec_helper"
 
 RSpec.describe Warner do
   before do
-    allow(Object).to receive(:const_defined?).with("ActiveSupport").and_return(false)
-    allow(Object).to receive(:const_defined?).with("Rails").and_return(false)
+    allow(Object).to receive(:const_defined?).with(:ActiveSupport).and_return(false)
+    allow(Object).to receive(:const_defined?).with(:Rails).and_return(false)
   end
 
   it "has a version number" do
