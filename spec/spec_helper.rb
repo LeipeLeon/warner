@@ -19,16 +19,17 @@ module Helpers
     out = StringIO.new
     $stdout = out
     yield
-    return out
+    out
   ensure
     $stdout = old_stdout
   end
+
   def capture_stderr
     old_stderr = $stderr
     out = StringIO.new
     $stderr = out
     yield
-    return out
+    out
   ensure
     $stderr = old_stderr
   end
