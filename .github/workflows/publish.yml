@@ -24,11 +24,11 @@ jobs:
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
-    - name: Find version
+    - name: Find and tag version
       run: |
         git config --global user.email "bot@wendbaar.nl"
         git config --global user.name "Leon BerenBot"
-        TAGNAME=$(bundle exec rake version)
+        TAGNAME=v$(bundle exec rake version)
         git tag -a ${TAGNAME} -m "Tagged w/ Github Action"
         git push origin ${TAGNAME}
 
